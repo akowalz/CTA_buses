@@ -1,0 +1,9 @@
+stop-route 1-100:
+  stop_id: 1
+  route: 100
+stop-route 1-101:
+  stop_id: 1
+  route: 101
+stop-route 2-100:
+  stop_id: 2
+  route: 100

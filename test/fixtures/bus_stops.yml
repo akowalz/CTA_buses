@@ -6,3 +6,11 @@ stop1:
   alightings: 11.2 
   loc_lat: 41.2
   loc_long: 42.2
+stop2:
+  stop_id: 2
+  on_street: SHERIDAN 
+  cross_street: NOYES
+  boardings: 100.1
+  alightings: 111.2 
+  loc_lat: 41.5
+  loc_long: 42.1
