@@ -1,0 +1,50 @@
+  <h1>Bus Stop <%= @stop.stop_id %></h1> 
+
+  <h3><em>
+    <%= @stop.on_street.titlecase %> and 
+    <%= @stop.cross_street.titlecase %>
+  </em></h3>
+
+  <h3>Stats:</h3>
+  <dl class="dl-horizontal">
+    <dt>Boardings</dt> <dd><%= @stop.boardings %></dd>
+    <dt>Alightings:</dt> <dd><%= @stop.alightings %></dd>  
+  </dl>
+
+  <h4>On <%= pluralize(@routes.length,"Route") %>:</h4>
+    |
+    <% @routes.each do |r| %>
+      <%= link_to "#{r.route}", bus_route_path(r.route) %> |
+    <% end %>
+
+    <h3>Map</h3>
+
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 700px; 
+                    width: 700px;
+                  }
+    </style>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var stopLatLng = new google.maps.LatLng(<%= "#{@stop.loc_lat}, #{@stop.loc_long}" %>);
+        var mapOptions = {
+          center: stopLatLng,
+          zoom: 16 
+        };
+        var map = new google.maps.Map(document.getElementById("map-canvas"),
+            mapOptions);
+        var stopMarker = new google.maps.Marker({
+          position: stopLatLng,
+          map: map,
+        });
+      }
+      google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+    <div id="map-canvas"/>
+

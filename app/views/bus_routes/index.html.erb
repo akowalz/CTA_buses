@@ -1,0 +1,20 @@
+<h1>All Routes</h1>
+
+<%= will_paginate @routes %>
+
+<table class="table table-striped">
+  <tr>
+    <th>Route</th>
+    <th>Number of Stops</th>
+  </tr>
+  <% @routes.each do |r| %>
+    <tr>
+      <% unless r.route.nil? %>
+        <td><%= link_to "#{r.route}", bus_route_path(r.route) %></td>
+      <% end %>
+      <td><%=r.num_stops %></td>
+    </tr>
+  <% end %>
+</table>
+
+<%= will_paginate @routes %>

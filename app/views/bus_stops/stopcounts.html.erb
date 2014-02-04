@@ -1,0 +1,33 @@
+<h1>All Stops (ordered by routes)</h1>
+
+<%= will_paginate @bus_stops %>
+
+
+<table class="table table-striped"/>
+
+  <tr>
+    <th>Stop ID</th>
+    <th># of Routes</th>
+    <th>On Street</th>
+    <th>Cross Street</th>
+    <th>Boardings</th>
+    <th>Alightings</th>
+    <th>Location</th>
+  </tr>
+
+  <% @bus_stops.each do |stop| %>
+
+    <tr>
+      <td><%= link_to "#{stop.stop_id}", bus_stop_path(stop.stop_id) %></td>
+      <td><%= stop.count %></td>
+      <td><%= stop.on_street %></td>
+      <td><%= stop.cross_street %></td>
+      <td><%= stop.boardings %></td>
+      <td><%= stop.alightings %></td>
+      <td>(<%=stop.loc_lat%>, <%=stop.loc_long%>)</td>
+    </tr>
+
+  <% end %>
+</table>
+
+<%= will_paginate @bus_stops%>
