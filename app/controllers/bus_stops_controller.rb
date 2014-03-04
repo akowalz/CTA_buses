@@ -1,6 +1,7 @@
 class BusStopsController < ApplicationController
   def index
     @bus_stops = BusStop.all.paginate(page: params[:page])
+
   end
 
   def show
@@ -13,7 +14,6 @@ class BusStopsController < ApplicationController
                           .paginate(page: params[:page])                  
 
   end
-
 
 end
 

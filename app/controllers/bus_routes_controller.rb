@@ -7,12 +7,21 @@ class BusRoutesController < ApplicationController
     @boardings = total_boardings @bus_stops
     @alightings = total_alightings @bus_stops
     @street = get_representative_street params[:id]
+
+
+
+   
   end
 
   def index
     @routes = StopOnRoute.select("COUNT(stop_id) as num_stops, route")
                           .group("route").order("num_stops desc")
                           .paginate(page: params[:page])
+
+    # the number of stops that represent 50% of the total boardings
+    # divided by number of stops on the route
+
+
   end
 
   private 
